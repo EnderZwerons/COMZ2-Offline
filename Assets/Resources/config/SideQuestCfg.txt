@@ -1,0 +1,62 @@
+<SideQuestCfg>
+  <!--Clean-->
+  <CleanQuest comment="Grab your gun and get ready for a killing rage!" >
+  </CleanQuest>
+  <!--Time-->
+  <TimeQuest comment="Survive massive waves of zombies!" >	
+  </TimeQuest>
+  <!--Res-->
+  <NpcResQuest comment="Our supplies were taken by zombies. Get them back!" >
+  </NpcResQuest>
+  <!--Convoy-->
+  <NpcConvoyQuest comment="This place has been overrun. Take the civilian to safety." >
+  </NpcConvoyQuest>
+  <!--Boss-->
+  <BossQuest comment="A mighty boss finally takes the stage. Finish it off at full strength!" >
+  </BossQuest>
+  <!--Daily-->
+  <DailyQuest comment="Grab your gun and get ready for a killing rage!" >
+  </DailyQuest>
+
+  <!--1=Clean 2=time 3=res 4=rescue 5=Boss 8=MainMission-->
+  <SideQuestOrder level="1" scene="COM2_KILL_1" mode="1" boss="0" />
+  <SideQuestOrder level="2" scene="Junkyard" mode="8" boss="0" />
+  <SideQuestOrder level="3" scene="COM2_EASY_1" mode="8" boss="0" />
+  <SideQuestOrder level="4" scene="Church" mode="1" boss="0" />  
+  <SideQuestOrder level="5" scene="Lab_Defend_01" mode="1" boss="0" />      
+  <SideQuestOrder level="6" scene="Depot" mode="8" boss="0" />
+  <SideQuestOrder level="7" scene="COM2_KILL_2" mode="1" boss="0" />
+  <SideQuestOrder level="8" scene="COM2_KILL_3" mode="1" boss="0" />
+  <SideQuestOrder level="9" scene="COM2_EASY_2" mode="8" boss="0" />  
+  <SideQuestOrder level="10" scene="Depot" mode="1" boss="0" />   
+  <SideQuestOrder level="11" scene="Junkyard" mode="1" boss="0" />    
+  <SideQuestOrder level="12" scene="Lab_Boss_01" mode="8" boss="0" />
+  <SideQuestOrder level="13" scene="Lab_Defend_02" mode="1" boss="0" />
+  <SideQuestOrder level="14" scene="Junkyard" mode="8" boss="0" />  
+  <SideQuestOrder level="15" scene="COM2_KILL_5" mode="8" boss="0" />   
+  <SideQuestOrder level="16" scene="COM2_KILL_4" mode="1" boss="0" />     
+  <SideQuestOrder level="17" scene="Church" mode="1" boss="0" />  
+  <SideQuestOrder level="18" scene="COM2_KILL_2" mode="8" boss="0" />   
+  <SideQuestOrder level="19" scene="Church" mode="8" boss="0" />   
+  <SideQuestOrder level="20" scene="Depot" mode="1" boss="0" />      
+  <SideQuestOrder level="21" scene="Lab_Defend_01" mode="1" boss="0" />
+  <SideQuestOrder level="22" scene="Junkyard" mode="8" boss="0" />
+  <SideQuestOrder level="23" scene="COM2_KILL_1" mode="1" boss="0" />
+  <SideQuestOrder level="24" scene="Junkyard" mode="1" boss="0" />
+  <SideQuestOrder level="25" scene="COM2_EASY_1" mode="4" boss="0" />
+  <SideQuestOrder level="26" scene="Church" mode="1" boss="0" />  
+  <SideQuestOrder level="27" scene="Lab_Defend_01" mode="1" boss="0" />      
+  <SideQuestOrder level="28" scene="Depot" mode="1" boss="0" />
+  <SideQuestOrder level="29" scene="COM2_KILL_3" mode="1" boss="0" />
+  <SideQuestOrder level="30" scene="Junkyard" mode="5" boss="FatCook" />      
+  <SideQuestOrder level="31" scene="Lab_Kill_01" mode="1" boss="0" />
+  <SideQuestOrder level="32" scene="Lab_Defend_02" mode="1" boss="0" />   
+  <SideQuestOrder level="33" scene="COM2_EASY_3" mode="4" boss="0" />
+  <SideQuestOrder level="34" scene="COM2_KILL_3" mode="1" boss="0" />
+  <SideQuestOrder level="35" scene="Lab_Defend_01" mode="1" boss="0" />  
+  <SideQuestOrder level="36" scene="Lab_Kill_02" mode="1" boss="0" />   
+  <SideQuestOrder level="37" scene="COM2_NORMAL_1" mode="4" boss="0" />     
+  <SideQuestOrder level="38" scene="Depot" mode="5" boss="Haoke_A" /> 
+  <SideQuestOrder level="39" scene="Lab_Kill_03" mode="1" boss="0" />   
+  <SideQuestOrder level="40" scene="Lab_Defend_02" mode="1" boss="0" />        
+</SideQuestCfg>

@@ -1,0 +1,16 @@
+<SideQuestDifficultyCfg>
+  
+  <SideQuestHpDifficulty levelRange="1" hpN="1" hpParaA="4" hpParaB="2.88889" />
+  <SideQuestHpDifficulty levelRange="10" hpN="2" hpParaA="30" hpParaB="5.4" />
+  <SideQuestHpDifficulty levelRange="60" hpN="3" hpParaA="300" hpParaB="30" />
+  <SideQuestHpDifficulty levelRange="100" hpN="4" hpParaA="1500" hpParaB="170" />
+  <SideQuestHpDifficulty levelRange="150" hpN="5" hpParaA="10000" hpParaB="400" />
+  <SideQuestHpDifficulty levelRange="200" hpN="6" hpParaA="30000" hpParaB="150" />  
+
+  <SideQuestDmgDifficulty levelRange="1" dmgN="1" dmgParaA="30" dmgParaB="2.222222" />
+  <SideQuestDmgDifficulty levelRange="10" dmgN="2" dmgParaA="50" dmgParaB="2" />
+  <SideQuestDmgDifficulty levelRange="60" dmgN="3" dmgParaA="150" dmgParaB="6.25" />
+  <SideQuestDmgDifficulty levelRange="100" dmgN="4" dmgParaA="400" dmgParaB="12" />
+  <SideQuestDmgDifficulty levelRange="150" dmgN="5" dmgParaA="1000" dmgParaB="20" />
+  <SideQuestDmgDifficulty levelRange="200" dmgN="6" dmgParaA="2000" dmgParaB="10" />  
+</SideQuestDifficultyCfg>

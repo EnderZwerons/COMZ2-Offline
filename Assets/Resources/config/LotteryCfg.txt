@@ -1,0 +1,47 @@
+<LotteryCfg>
+  <LotteryPrice resetPrice="5" lotteryPrice="10" />
+  <LotterySeatFrashPercent free_val="10" crystal_val="30" />
+  <LotteryAward count="10" crystal="30" />
+  <LotterySeat level="1" seatCount="3" weight="50" />
+  <LotterySeat level="2" seatCount="3" weight="40" />
+  <LotterySeat level="3" seatCount="1" weight="32" />
+  <LotterySeat level="4" seatCount="1" weight="16" />
+  <LotterySeat level="5" seatCount="1" weight="8" />
+  <LotterySeat level="6" seatCount="1" weight="4" />
+  <LotterySeat level="7" seatCount="0" weight="1" />
+  <!--awardType 1.Weapon; 2.WeaponFragment 3.Cash 4.Voucher 5.Crystal-->
+  <AwardItem name="Cash_l" level="3" awardType="3" count="20000" />
+  <AwardItem name="Voucher_l" level="5" awardType="4" count="60" />
+  <AwardItem name="Crystal_l" level="6" awardType="5" count="30" />
+  <AwardItem name="Cash_s" level="1" awardType="3" count="2000" />
+  <AwardItem name="Voucher_s" level="2" awardType="4" count="10" />
+  <AwardItem name="Crystal_s" level="2" awardType="5" count="5" />
+  <AwardItem name="PGM" level="6" awardType="1" count="1" />
+  <AwardItem name="RPG" level="5" awardType="1" count="1" />
+  <AwardItem name="Gatlin" level="3" awardType="1" count="1" />
+  <AwardItem name="Xm1014" level="2" awardType="1" count="1" />
+  <AwardItem name="AK47" level="2" awardType="1" count="1" />
+  <AwardItem name="M16" level="1" awardType="1" count="1" />
+  <AwardItem name="Winchester1200" level="1" awardType="1" count="1" />
+  <AwardItem name="Laser" level="6" awardType="1" count="1" />
+  <AwardItem name="FN2000" level="5" awardType="1" count="1" />
+  <AwardItem name="XM12" level="5" awardType="1" count="1" />
+  <AwardItem name="M32" level="5" awardType="1" count="1" />
+  <AwardItem name="IonCannon" level="7" awardType="1" count="1" />
+  <AwardItem name="FN2000_1" level="4" awardType="2" count="1" />
+  <AwardItem name="FN2000_2" level="4" awardType="2" count="1" />
+  <AwardItem name="FN2000_3" level="4" awardType="2" count="1" />
+  <AwardItem name="XM12_1" level="4" awardType="2" count="1" />
+  <AwardItem name="XM12_2" level="4" awardType="2" count="1" />
+  <AwardItem name="XM12_3" level="4" awardType="2" count="1" />
+  <AwardItem name="M32_1" level="5" awardType="2" count="1" />
+  <AwardItem name="M32_2" level="5" awardType="2" count="1" />
+  <AwardItem name="M32_3" level="5" awardType="2" count="1" />
+  <AwardItem name="IonCannon_1" level="6" awardType="2" count="1" />
+  <AwardItem name="IonCannon_2" level="6" awardType="2" count="1" />
+  <AwardItem name="IonCannon_3" level="6" awardType="2" count="1" />
+  <AwardItem name="IceGun_1" level="6" awardType="2" count="1" />
+  <AwardItem name="IceGun_2" level="6" awardType="2" count="1" />
+  <AwardItem name="IceGun_3" level="6" awardType="2" count="1" />  
+  <AwardItem name="IceGun" level="7" awardType="1" count="1" />  
+</LotteryCfg>

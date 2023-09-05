@@ -1,0 +1,36 @@
+<CoopBossCfg>
+
+  <Boss name="FatCook" showName="Chef" day="8" hp="96240" damageBase="17" rewardGold="10000" rewardGoldFaile="2000" 
+        rewardCrystal="3" rewardsWeapon="FN2000" rewardsWeaponFragments="FN2000_1|FN2000_2|FN2000_3" >
+    <scene val="Lab_Boss_01" />
+    <scene val="Depot" />
+    <scene val="Junkyard" />	
+  </Boss>
+  
+  <Boss name="Haoke_A" showName="Rugby Player" day="15" hp="196950" damageBase="23" rewardGold="30000" rewardGoldFaile="3000" 
+        rewardCrystal="5" rewardsWeapon="XM12" rewardsWeaponFragments="XM12_1|XM12_2|XM12_3" >
+    <scene val="Junkyard" />
+    <scene val="Depot" />
+  </Boss>
+  
+  <Boss name="Wrestler" showName="Wrestler" day="30" hp="1372320" damageBase="32" rewardGold="80000" rewardGoldFaile="3000" 
+        rewardCrystal="10" rewardsWeapon="M32" rewardsWeaponFragments="M32_1|M32_2|M32_3" >
+    <scene val="Depot" />
+    <scene val="Junkyard" />
+	<scene val="Lab_Boss_01" />
+  </Boss>
+  
+  <Boss name="Halloween" showName="Straw Man" day="40" hp="1829700" damageBase="79" rewardGold="150000" rewardGoldFaile="3000"
+      rewardCrystal="15" rewardsWeapon="IonCannon" rewardsWeaponFragments="IonCannon_1|IonCannon_2|IonCannon_3" >
+    <scene val="Junkyard" />
+    <scene val="Depot" />
+  </Boss>
+
+  <Boss name="Shark" showName="Shark Hunter" day="60" hp="2739960" damageBase="132" rewardGold="200000" rewardGoldFaile="3000"
+      rewardCrystal="20" rewardsWeapon="IceGun" rewardsWeaponFragments="IceGun_1|IceGun_2|IceGun_3" >
+    <scene val="Depot" />
+    <scene val="Junkyard" />
+    <scene val="Lab_Boss_01" />	
+  </Boss>
+  
+</CoopBossCfg>

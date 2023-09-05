@@ -1,0 +1,54 @@
+<SkillConfig>
+  <!--SkillUpPriceCfg-->
+  <SkillUpPriceCfg ParaA="3.43069" ParaB="5" ParaK="1.8" />
+  <!--Human-->
+  <Skill name="Whirlwind" showName="Whirlwind" unlockLevel="1" maxLevel="10" unlockPrice="0" upPriceRatio="0.8" damagePara="1.5946" 
+         existState ="2" ownerType="Avatar" owner="Human" content="Spin into a frenzy, striking everything in your path." >
+    <CDTime base="18" max="14" />
+    <LifeTime base="4" max="7" />
+    <HP base="0" max="0" />
+    <Frequency base="0.5" max="0.5" />
+    <Damage base="90" max="7000" />
+    <Range base="5" max="5" />
+  </Skill>
+  <!--Swat-->
+  <Skill name="Grenade" showName="Grenade" unlockLevel="1" maxLevel="10" unlockPrice="0" upPriceRatio="1.1" damagePara="1.5761"
+         existState ="2" ownerType="Avatar" owner="Swat" content="Throw a grenade that damages any zombies caught in the blast radius." >
+    <CDTime base="10" max="8" />
+    <LifeTime base="0" max="0" />
+    <HP base="0" max="0" />
+    <Frequency base="0" max="0" />
+    <Damage base="21" max="1200" />
+    <Range base="3" max="6" />
+  </Skill>
+  <!--Mike-->
+  <Skill name="BaseballRobot" showName="Robo Pitcher" unlockLevel="1" maxLevel="10" unlockPrice="0" upPriceRatio="1" damagePara="1.6156"
+     existState ="2" ownerType="Avatar" owner="Mike" content="Set up a robo pitcher that fires baseballs at zombies in range." >
+    <CDTime base="18" max="14" />
+    <LifeTime base="6" max="8" />
+    <HP base="0" max="0" />
+    <Frequency base="0.25" max="0.25" />
+    <Damage base="60" max="5300" />
+    <Range base="30" max="30" />
+  </Skill>
+  <!--Cowboy-->
+  <Skill name="Scarecrow" showName="Trap" unlockLevel="1" maxLevel="10" unlockPrice="0" upPriceRatio="0.9" damagePara="1.6273"
+       existState ="2" ownerType="Avatar" owner="Cowboy" content="Throw a trap to distract and damage zombies." >
+    <CDTime base="20" max="15" />
+    <LifeTime base="0" max="0" />
+    <HP base="300" max="2500" />
+    <Frequency base="5" max="5" />
+    <Damage base="30" max="800" />
+    <Range base="10" max="10" />
+  </Skill>
+  <!--Doctor-->
+  <Skill name="Enchant" showName="Charm" unlockLevel="1" maxLevel="10" unlockPrice="0" upPriceRatio="1.3" damagePara="0"
+     existState ="2" ownerType="Avatar" owner="Doctor" content="Charm a zombie to fight along with you." >
+    <CDTime base="16" max="12" />
+    <LifeTime base="0" max="0" />
+    <HP base="0" max="0" />
+    <Frequency base="1" max="1" />
+    <Damage base="0" max="0" />
+    <Range base="0" max="0" />
+  </Skill>
+</SkillConfig>

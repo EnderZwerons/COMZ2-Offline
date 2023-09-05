@@ -1,0 +1,93 @@
+<AvatarConfig>
+  <!--ChannelSceneColor-->
+  <ChannelSceneColor name="COM2_KILL_4" color_r="135" color_g="70" color_b="115" color_a="255"/>
+  <ChannelSceneColor name="COM2_KILL_5" color_r="135" color_g="70" color_b="115" color_a="255"/>
+  <ChannelSceneColor name="COM2_HARD_1" color_r="135" color_g="70" color_b="115" color_a="255"/>
+  <ChannelSceneColor name="Lab_Kill_03" color_r="40" color_g="40" color_b="46" color_a="255"/>
+  <ChannelSceneColor name="Lab_Boss_02" color_r="40" color_g="40" color_b="46" color_a="255"/>  
+  <!--AvatarCombo-->
+  <AvatarCombo level="1" DmgRatio="1.1" RateRatio="1.0" />
+  <AvatarCombo level="2" DmgRatio="1.15" RateRatio="1.08" />
+  <AvatarCombo level="3" DmgRatio="1.3" RateRatio="1.2" />
+  <!--AvatarBattleCount-->
+  <AvatarExp levelRange="1" ParaA="1" ParaB="0.5" />
+  <AvatarExp levelRange="5" ParaA="3" ParaB="1.27" />
+  <AvatarExp levelRange="15" ParaA="15.73" ParaB="2.2" />
+  <AvatarExp levelRange="30" ParaA="48.74" ParaB="3.36" />
+  <!---->
+  <GameInitMoney cash="200" voucher="10" crystal="0" />
+  <!---->
+  <RebirthGod time="5" />
+  <!--AvatarHpCfg-->
+  <AvatarHpCfg ParaA="10.277778" ParaB="8.611111" ParaC="-8.33333" />
+  <!--AvatarUpCfg-->
+  <AvatarUpCfg ParaA="1.30589" ParaB="2" ParaK="1.2" />
+  <!--AvatarHpUpPriceCfg-->
+  <AvatarHpUpPriceCfg ParaA="1.30598" ParaB="2" ParaK="1.2" />
+  <!--AvatarDamagePriceCfg-->
+  <AvatarDamagePriceCfg ParaA="0.51432" ParaB="1" ParaK="1.2" />
+  <!--AvatarArmorPriceCfg-->
+  <AvatarArmorPriceCfg ParaA="3.75686" ParaB="10" ParaK="1.2" />
+  - <!-- ExchgCurrcy--> 
+  <ExchgCurrcyCfg toCash="2000" toVoucher="0.8" /> 
+  <!--Human-->
+  <Avatar avatar_name="Human" type="Human" voucherAvatar="1" price="0" CrystalUnlockPrice="0" upHpPriceFactor="1" upDamagePriceFactor="1"
+          upArmorPriceFactor="1" upPriceFactor="1" maxLevel="30" showName="Joe Blo" hpRatio="1" firstSkill="Whirlwind" 
+          existState ="2" secondaryWeapon="Chainsaw" reloadRatio="1.4" fixVal="1" worth1="50" worth2="1500" unlockDay="0" >
+    <HP base="500" max="500" />
+    <Speed base="6.8" max="6.8" />
+    <Damage base="10" max="100" />
+    <Armor base="10" max="50" />
+    <Ex base="0.2" max="0.13" />
+    <SecondWeapon level="0" weapon="0" />
+    <SecondWeapon level="0" weapon="0" />
+  </Avatar>
+  <!--Swat-->
+  <Avatar avatar_name="Swat" type="Swat" voucherAvatar="1" price="18" CrystalUnlockPrice="20" upHpPriceFactor="1" upDamagePriceFactor="1"
+          upArmorPriceFactor="1" upPriceFactor="1" maxLevel="30" showName="Hardy" hpRatio="1.3" firstSkill="Grenade"
+          existState ="0" secondaryWeapon="Shield" reloadRatio="1.6" fixVal="1.11" worth1="50" worth2="1500" unlockDay="14" >
+    <HP base="620" max="620" />
+    <Speed base="7" max="7" />
+    <Damage base="14" max="140" />
+    <Armor base="10" max="50" />
+    <Ex base="0.2" max="0.13" />
+    <SecondWeapon level="0" weapon="0" />
+    <SecondWeapon level="0" weapon="0" />
+  </Avatar>
+  <!--Mike-->
+  <Avatar avatar_name="Mike" type="Mike" voucherAvatar="1" price="14" CrystalUnlockPrice="20" upHpPriceFactor="1" upDamagePriceFactor="1"
+          upArmorPriceFactor="1" upPriceFactor="1" maxLevel="30" showName="Mike" hpRatio="1.2" firstSkill="BaseballRobot" 
+          existState ="0" secondaryWeapon="Baseball" reloadRatio="1.2" fixVal="1.1" worth1="50" worth2="1500" unlockDay="2" >
+    <HP base="600" max="600" />
+    <Speed base="7.6" max="7.6" />
+    <Damage base="16" max="160" />
+    <Armor base="10" max="50" />
+    <Ex base="0.2" max="0.13" />
+    <SecondWeapon level="0" weapon="0" />
+    <SecondWeapon level="0" weapon="0" />
+  </Avatar>
+  <!--Cowboy-->
+  <Avatar avatar_name="Cowboy" type="Cowboy" voucherAvatar="1" price="16" CrystalUnlockPrice="20" upHpPriceFactor="1" upDamagePriceFactor="1"
+          upArmorPriceFactor="1" upPriceFactor="1" maxLevel="30" showName="Hubert" hpRatio="1.1" firstSkill="Scarecrow"
+          existState ="0" secondaryWeapon="44Magnum" reloadRatio="1.7" fixVal="1.05" worth1="50" worth2="1500" unlockDay="9" >
+    <HP base="550" max="550" />
+    <Speed base="7.4" max="7.4" />
+    <Damage base="20" max="200" />
+    <Armor base="10" max="50" />
+    <Ex base="0.2" max="0.13" />
+    <SecondWeapon level="0" weapon="0" />
+    <SecondWeapon level="0" weapon="0" />
+  </Avatar>	
+  <!--Doctor-->
+  <Avatar avatar_name="Doctor" type="Doctor" voucherAvatar="1" price="20" CrystalUnlockPrice="20" upHpPriceFactor="1" upDamagePriceFactor="1"
+          upArmorPriceFactor="1" upPriceFactor="1" maxLevel="30" showName="Dr. Galen" hpRatio="1.5" firstSkill="Enchant"
+          existState ="0" secondaryWeapon="Medicine" reloadRatio="1.5" fixVal="1.14" worth1="50" worth2="1500" unlockDay="18" >
+    <HP base="650" max="650" />
+    <Speed base="6.8" max="6.8" />
+    <Damage base="13" max="130" />
+    <Armor base="10" max="50" />
+    <Ex base="0.2" max="0.13" />
+    <SecondWeapon level="0" weapon="0" />
+    <SecondWeapon level="0" weapon="0" />
+  </Avatar>
+</AvatarConfig>

@@ -1,0 +1,13 @@
+<MainQuestCfg>
+  <!--1=Clean 2=time 3=res 4=rescue 5=Boss 6=daily-->
+  <MainQuest level="2" scene="COM2_ZERO_1" mode="4" boss="0" comment="Your friend has been surrounded by zombies. Rescue him now!" avatar="Mike" />
+  <MainQuest level="3" scene="Junkyard" mode="5" boss="FatCook" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="Winchester1200" />
+  <MainQuest level="6" scene="Depot" mode="5" boss="Haoke_A" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="M16" />
+  <MainQuest level="9" scene="COM2_NORMAL_1" mode="4" boss="0" comment="Your friend has been surrounded by zombies. Rescue him now!" avatar="Cowboy" />
+  <MainQuest level="12" scene="Church" mode="5" boss="Wrestler" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="Xm1014" />
+  <MainQuest level="14" scene="COM2_NORMAL_2" mode="4" boss="0" comment="Your friend has been surrounded by zombies. Rescue him now!" avatar="Swat" /> 
+  <MainQuest level="15" scene="Junkyard" mode="5" boss="Halloween" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="AK47" />
+  <MainQuest level="18" scene="COM2_NORMAL_3" mode="4" boss="0" comment="Your friend has been surrounded by zombies. Rescue him now!" avatar="Doctor" />  
+  <MainQuest level="19" scene="Lab_Boss_01" mode="5" boss="FatCook" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="Gatlin" />
+  <MainQuest level="22" scene="Lab_Boss_02" mode="5" boss="Shark" comment="A mighty boss finally takes the stage. Finish it off at full strength!" weapon="RPG" />
+</MainQuestCfg>
