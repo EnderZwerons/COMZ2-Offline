@@ -23,6 +23,7 @@ namespace CoMZ2
 				if (AnimationUtil.IsAnimationPlayedPercentage(shark.gameObject, shark.ANI_DIVE_01, 1f))
 				{
 					skill_stpe++;
+					m_enemy.nav_pather.PlayNavMeshAgent();
 					shark.SetPathCatchState(true);
 					shark.OnSharkDiveReady();
 				}
@@ -61,6 +62,7 @@ namespace CoMZ2
 			shark.dive_enable = false;
 			cur_dive_time = 0f;
 			AnimationUtil.CrossAnimate(shark.gameObject, shark.ANI_DIVE_01, WrapMode.ClampForever);
+			m_enemy.nav_pather.StopNavMeshAgent();
 		}
 
 		public override void OnExitState()

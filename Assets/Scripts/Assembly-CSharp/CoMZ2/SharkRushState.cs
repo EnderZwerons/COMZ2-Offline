@@ -27,6 +27,7 @@ namespace CoMZ2
 				if (AnimationUtil.IsAnimationPlayedPercentage(shark.gameObject, shark.ANI_RUSH_01, 0.95f))
 				{
 					skill_stpe++;
+					m_enemy.nav_pather.PlayNavMeshAgent();
 					shark.ANI_CUR_ATTACK = shark.ANI_RUSH_02;
 					AnimationUtil.CrossAnimate(shark.gameObject, shark.ANI_RUSH_02, WrapMode.Loop);
 					shark.OnSharkRushReady();
@@ -89,6 +90,7 @@ namespace CoMZ2
 			cur_rush_time = 0f;
 			cur_rest_time = 0f;
 			AnimationUtil.CrossAnimate(shark.gameObject, shark.ANI_RUSH_01, WrapMode.ClampForever);
+			m_enemy.nav_pather.StopNavMeshAgent();
 		}
 
 		public override void OnExitState()

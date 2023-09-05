@@ -27,7 +27,7 @@ public class UIPromotionPanelController : UIShopPanelController
 	{
 		if (eventType == 3)
 		{
-			Application.OpenURL("https://play.google.com/store/apps/details?id=com.trinitigame.callofminiandroid");
+			Application.OpenURL("https://youtu.be/-k1h5XA68Og?si=iJGj1Hoh9eXy-RyM");
 		}
 	}
 
@@ -51,7 +51,7 @@ public class UIPromotionPanelController : UIShopPanelController
 	{
 		if (eventType == 3)
 		{
-			Application.OpenURL("https://play.google.com/store/apps/details?id=com.trinitigame.android.callofminibrawlers");
+			Application.OpenURL("https://youtu.be/hpEKtFcr-D4?si=OSy2E08_h6Ncjcdf");
 		}
 	}
 
@@ -59,7 +59,7 @@ public class UIPromotionPanelController : UIShopPanelController
 	{
 		if (eventType == 3)
 		{
-			Application.OpenURL("https://play.google.com/store/apps/details?id=com.trinitigame.android.comds");
+			Application.OpenURL("https://youtu.be/zFDuLE_B5Cw?si=XXNpzA0W-EhCSsMY");
 		}
 	}
 
@@ -67,7 +67,7 @@ public class UIPromotionPanelController : UIShopPanelController
 	{
 		if (eventType == 3)
 		{
-			Application.OpenURL("https://play.google.com/store/apps/details?id=com.trinitigame.callofminisniper");
+			Application.OpenURL("https://youtu.be/ykk2i92S2Q8?si=8tDdnULtAg9jfSu3");
 		}
 	}
 }
