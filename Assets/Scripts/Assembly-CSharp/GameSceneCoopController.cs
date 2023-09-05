@@ -489,15 +489,15 @@ public class GameSceneCoopController : GameSceneController
 				num = Player_damage_Set[key];
 			}
 		}
-		if (playerID.tnet_id == player_controller.tnet_user.Id)
-		{
+		//if (playerID.tnet_id == player_controller.tnet_user.Id)
+		//{
 			GameData.Instance.total_crystal += coopBossCfg.reward_crystal;
-		}
-		else
-		{
+		//}
+		//else
+		//{
 			int num2 = (int)((float)coopBossCfg.reward_gold * (Player_damage_Set[player_controller.player_id] / coopBossCfg.hp_capacity));
 			GameData.Instance.total_cash += num2;
-		}
+		//}
 		Dictionary<string, int> dictionary = new Dictionary<string, int>();
 		int num3 = 0;
 		foreach (string item2 in rewards_weapon_fragments)
@@ -657,15 +657,15 @@ public class GameSceneCoopController : GameSceneController
 
 	public override void CheckMissionFinished()
 	{
-		if (TNetConnection.IsServer && mission_controller_finished && !mission_check_finished && Enemy_Set.Count == 0)
+		if (/*TNetConnection.IsServer && */mission_controller_finished && !mission_check_finished && Enemy_Set.Count == 0)
 		{
-			if (tnetObj != null && TNetConnection.IsServer)
-			{
-				Debug.Log("send MissionWin");
-				SFSObject sFSObject = new SFSObject();
-				sFSObject.PutUtfString("MissionWin", "0");
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			}
+			//if (tnetObj != null && TNetConnection.IsServer)
+			//{
+			//	Debug.Log("send MissionWin");
+			//	SFSObject sFSObject = new SFSObject();
+			//	sFSObject.PutUtfString("MissionWin", "0");
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+			//}
 			MissionWin();
 		}
 	}
@@ -1425,13 +1425,13 @@ public class GameSceneCoopController : GameSceneController
 
 	public void CheckCoopMissionOver()
 	{
-		if (base.Inited && TNetConnection.IsServer && !mission_check_finished && CheckAllPlayerCoopDead())
+		if (base.Inited/* && TNetConnection.IsServer*/ && !mission_check_finished && CheckAllPlayerCoopDead())
 		{
-			Debug.Log("Coop Mission Over...");
+			//Debug.Log("Coop Mission Over...");
 			OnRemoteMissionFailed();
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutUtfString("MissionFailed", "0");
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+			//SFSObject sFSObject = new SFSObject();
+			//sFSObject.PutUtfString("MissionFailed", "0");
+			//tnetObj.Send(new BroadcastMessageRequest(sFSObject));
 		}
 	}
 

@@ -21,10 +21,10 @@ public class ScarecrowController : GuardianForceController
 		ANI_DEAD = "Attack01";
 		ANI_SHOW = "Place01";
 		base.Init();
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			tnetObj = TNetConnection.Connection;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	tnetObj = TNetConnection.Connection;
+		//}
 	}
 
 	protected override void Update()
@@ -62,12 +62,12 @@ public class ScarecrowController : GuardianForceController
 		StartCoroutine(RemoveOnTime(3f));
 		Invoke("OnScarecrowTriger", 0.03f);
 		Object.Instantiate(broken_eff_ref, base.transform.position, base.transform.rotation);
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutUtfString("skillEvent", "ScarecrowTriger");
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutUtfString("skillEvent", "ScarecrowTriger");
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	public override void OnGuardianBirth()

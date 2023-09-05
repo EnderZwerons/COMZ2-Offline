@@ -110,9 +110,11 @@ public class UICoopHallController : UISceneController
 		{
 			Debug.Log("OnCreateButton:" + GameData.Instance.cur_coop_boss);
 			int cur_coop_boss = (int)GameData.Instance.cur_coop_boss;
-			tNetObject.Send(new CreateRoomRequest(GameData.Instance.NickName + "'s Room", "triniti", (int)(GameData.Instance.cur_coop_boss + 8001 + GameConfig.Instance.server_group_index), 4, RoomCreateCmd.RoomType.limit, RoomCreateCmd.RoomSwitchMasterType.Auto, cur_coop_boss.ToString()));
+			PlayerPrefs.SetInt("curboss", cur_coop_boss);
+			//tNetObject.Send(new CreateRoomRequest(GameData.Instance.NickName + "'s Room", "triniti", (int)(GameData.Instance.cur_coop_boss + 8001 + GameConfig.Instance.server_group_index), 4, RoomCreateCmd.RoomType.limit, RoomCreateCmd.RoomSwitchMasterType.Auto, cur_coop_boss.ToString()));
 			IndicatorBlockController.ShowIndicator(TUIControls.gameObject, string.Empty);
 			is_private_room = true;
+			OnRoomJoin(null);
 		}
 	}
 
@@ -218,15 +220,15 @@ public class UICoopHallController : UISceneController
 	private void OnLogin(TNetEventData eventData)
 	{
 		IndicatorBlockController.Hide();
-		if ((int)eventData.data["result"] == 0)
-		{
-			Debug.Log("OnLogin OK! id:" + tNetObject.Myself.Id);
-			return;
-		}
-		Debug.Log("OnLogin Fail!");
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
+		//if ((int)eventData.data["result"] == 0)
+		//{
+		//	Debug.Log("OnLogin OK! id:" + tNetObject.Myself.Id);
+		//	return;
+		//}
+		//Debug.Log("OnLogin Fail!");
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
 	}
 
 	private void OnRoomCreation(TNetEventData eventData)
@@ -246,27 +248,27 @@ public class UICoopHallController : UISceneController
 
 	private void OnRoomJoin(TNetEventData eventData)
 	{
-		if ((int)eventData.data["result"] == 0)
-		{
+		//if ((int)eventData.data["result"] == 0)
+		//{
 			IndicatorBlockController.Hide();
 			Debug.Log("OnRoomJoin OK!");
 			Fade.FadeOut("UICoopRoom");
-		}
-		else
-		{
-			IndicatorBlockController.Hide();
-			Debug.Log("OnRoomJoin Fail! result:" + (RoomJoinResCmd.Result)(int)eventData.data["result"]);
-			GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Join room failed!", null, null);
-		}
+		//}
+		//else
+		//{
+		//	IndicatorBlockController.Hide();
+		//	Debug.Log("OnRoomJoin Fail! result:" + (RoomJoinResCmd.Result)(int)eventData.data["result"]);
+		//	GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Join room failed!", null, null);
+		//}
 	}
 
 	private void OnConnectionTimeOut(TNetEventData evt)
 	{
 		IndicatorBlockController.Hide();
-		Debug.Log("OnConnectionTimeOut");
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
+		//Debug.Log("OnConnectionTimeOut");
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
 	}
 
 	private void OnDisConnection(TNetEventData evt)
@@ -278,10 +280,10 @@ public class UICoopHallController : UISceneController
 	private void OnConnectionLost(TNetEventData evt)
 	{
 		IndicatorBlockController.Hide();
-		Debug.Log("OnConnectionLost");
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
+		//Debug.Log("OnConnectionLost");
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
 	}
 
 	private void OnReverseHearWaiting(TNetEventData evt)
@@ -300,9 +302,9 @@ public class UICoopHallController : UISceneController
 	{
 		Debug.LogWarning("OnReverseHearTimeout");
 		IndicatorBlockController.Hide();
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
 	}
 
 	private void OnRoomList(TNetEventData evt)
@@ -356,7 +358,7 @@ public class UICoopHallController : UISceneController
 		{
 			Debug.Log(www.error);
 			IndicatorBlockController.Hide();
-			GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
+			//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionFailedButton, null);
 			yield break;
 		}
 		string content2 = www.text;

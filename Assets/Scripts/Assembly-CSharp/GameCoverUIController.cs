@@ -73,7 +73,7 @@ public class GameCoverUIController : MonoBehaviour
 			width4 /= 2f;
 			height4 /= 2f;
 		}
-		Debug.LogError("------------ " + width4 + " " + height4);
+//		Debug.LogError("------------ " + width4 + " " + height4);
 		string tex_name5 = string.Empty;
 		if (Mathf.Max(width4, height4) >= 1136f)
 		{

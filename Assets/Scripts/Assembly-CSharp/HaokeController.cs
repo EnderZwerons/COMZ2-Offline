@@ -432,37 +432,37 @@ public class HaokeController : EnemyController
 		ObjectController key2 = (key = player);
 		float num = dictionary[key];
 		dictionary2[key2] = num + damage;
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			SFSArray sFSArray = new SFSArray();
-			sFSArray.AddShort((short)enemy_id);
-			sFSArray.AddFloat(damage);
-			sFSArray.AddBool(false);
-			sFSArray.AddFloat(0f);
-			sFSObject.PutSFSArray("enemyInjured", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			Dictionary<PlayerID, float> player_damage_Set;
-			Dictionary<PlayerID, float> dictionary3 = (player_damage_Set = GameSceneController.Instance.Player_damage_Set);
-			PlayerID player_id;
-			PlayerID key3 = (player_id = GameSceneController.Instance.player_controller.player_id);
-			num = player_damage_Set[player_id];
-			dictionary3[key3] = num + damage;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	SFSArray sFSArray = new SFSArray();
+		//	sFSArray.AddShort((short)enemy_id);
+		//	sFSArray.AddFloat(damage);
+		//	sFSArray.AddBool(false);
+		//	sFSArray.AddFloat(0f);
+		//	sFSObject.PutSFSArray("enemyInjured", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//	Dictionary<PlayerID, float> player_damage_Set;
+		//	Dictionary<PlayerID, float> dictionary3 = (player_damage_Set = GameSceneController.Instance.Player_damage_Set);
+		//	PlayerID player_id;
+		//	PlayerID key3 = (player_id = GameSceneController.Instance.player_controller.player_id);
+		//	num = player_damage_Set[player_id];
+		//	dictionary3[key3] = num + damage;
+		//}
 		if (enemy_data.OnInjured(damage))
 		{
 			GameSceneController.Instance.UpdateEnemyDeathInfo(enemy_data.enemy_type, 1);
 			OnDead(damage, weapon, player, hit_point, hit_normal);
 			SetState(DEAD_STATE);
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
-			{
-				SFSObject sFSObject2 = new SFSObject();
-				SFSArray sFSArray2 = new SFSArray();
-				sFSArray2.AddShort((short)enemy_id);
-				sFSArray2.AddFloat(damage);
-				sFSObject2.PutSFSArray("enemyDead", sFSArray2);
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
+			//{
+			//	SFSObject sFSObject2 = new SFSObject();
+			//	SFSArray sFSArray2 = new SFSArray();
+			//	sFSArray2.AddShort((short)enemy_id);
+			//	sFSArray2.AddFloat(damage);
+			//	sFSObject2.PutSFSArray("enemyDead", sFSArray2);
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
+			//}
 		}
 		else
 		{

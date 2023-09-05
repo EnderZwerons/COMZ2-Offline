@@ -35,7 +35,7 @@ public class UICoopRoomController : UISceneController
 		GameConfig.CheckGameConfig();
 		GameData.CheckGameData();
 		MenuAudioController.CheckGameMenuAudio();
-		start_button.gameObject.SetActive(false);
+		//start_button.gameObject.SetActive(false);
 	}
 
 	private IEnumerator Start()
@@ -72,9 +72,9 @@ public class UICoopRoomController : UISceneController
 		dataObj.PutBool("InRoom", true);
 		SFSObject userVars = new SFSObject();
 		userVars.PutSFSObject("data", dataObj);
-		tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.RoomState, userVars));
+		//tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.RoomState, userVars));
 		yield return 1;
-		GameData.Instance.cur_coop_boss = (CoopBossType)int.Parse(tnetObj.CurRoom.Commnet);
+		GameData.Instance.cur_coop_boss = (CoopBossType)PlayerPrefs.GetInt("curboss");//(CoopBossType)int.Parse(tnetObj.CurRoom.Commnet);
 		RefreshClientsShow();
 		StartCoroutine(CheckStartButtonState());
 		GameData.Instance.cur_game_type = GameData.GamePlayType.Coop;
@@ -92,7 +92,7 @@ public class UICoopRoomController : UISceneController
 		yield return 3;
 		SFSObject data_tem = new SFSObject();
 		data_tem.PutBool("data", true);
-		tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.RoomReady, userVars));
+//		tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.RoomReady, userVars));
 	}
 
 	private void FixedUpdate()
@@ -112,23 +112,24 @@ public class UICoopRoomController : UISceneController
 
 	private void StartGame()
 	{
-		CoopBossCfg coopBossCfg = GameConfig.Instance.Coop_Boss_Cfg_Set[GameConfig.GetEnemyTypeFromBossType(GameData.Instance.cur_coop_boss)];
-		string val = coopBossCfg.scene_list[Random.Range(0, coopBossCfg.scene_list.Count)];
-		SFSObject sFSObject = new SFSObject();
-		sFSObject.PutUtfString("SceneName", val);
-		sFSObject.PutDouble("GameStartTime", tnetObj.TimeManager.NetworkTime);
-		sFSObject.PutShort("CurBoss", (short)GameData.Instance.cur_coop_boss);
-		tnetObj.Send(new SetRoomVariableRequest(TNetRoomVarType.GameStarted, sFSObject));
-		IndicatorBlockController.ShowIndicator(TUIControls.gameObject, string.Empty);
+		OnRoomStart(null);
+		//CoopBossCfg coopBossCfg = GameConfig.Instance.Coop_Boss_Cfg_Set[GameConfig.GetEnemyTypeFromBossType(GameData.Instance.cur_coop_boss)];
+		//string val = coopBossCfg.scene_list[Random.Range(0, coopBossCfg.scene_list.Count)];
+		//SFSObject sFSObject = new SFSObject();
+		//sFSObject.PutUtfString("SceneName", val);
+		//sFSObject.PutDouble("GameStartTime", tnetObj.TimeManager.NetworkTime);
+		//sFSObject.PutShort("CurBoss", (short)GameData.Instance.cur_coop_boss);
+		//tnetObj.Send(new SetRoomVariableRequest(TNetRoomVarType.GameStarted, sFSObject));
+		//IndicatorBlockController.ShowIndicator(TUIControls.gameObject, string.Empty);
 	}
 
 	private void OnStartButton(TUIControl control, int eventType, float wparam, float lparam, object data)
 	{
-		if (eventType == 3)
-		{
-			Debug.Log("OnStartButton");
+		//if (eventType == 3)
+		//{
+		//	Debug.Log("OnStartButton");
 			StartGame();
-		}
+		//}
 	}
 
 	private void OnBackButton(TUIControl control, int eventType, float wparam, float lparam, object data)
@@ -165,14 +166,14 @@ public class UICoopRoomController : UISceneController
 
 	private TNetUser FindRoomMaster()
 	{
-		int roomMasterID = TNetConnection.Connection.CurRoom.RoomMasterID;
-		foreach (TNetUser user in TNetConnection.Connection.CurRoom.UserList)
-		{
-			if (user.Id == roomMasterID)
-			{
-				return user;
-			}
-		}
+		//int roomMasterID = TNetConnection.Connection.CurRoom.RoomMasterID;
+		//foreach (TNetUser user in TNetConnection.Connection.CurRoom.UserList)
+		//{
+		//	if (user.Id == roomMasterID)
+		//	{
+		//		return user;
+		//	}
+		//}
 		return null;
 	}
 
@@ -225,10 +226,10 @@ public class UICoopRoomController : UISceneController
 	private void OnConnectionLost(TNetEventData evt)
 	{
 		IndicatorBlockController.Hide();
-		Debug.Log("OnConnectionLost");
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
+		//Debug.Log("OnConnectionLost");
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
 	}
 
 	private void OnReverseHearWaiting(TNetEventData evt)
@@ -247,9 +248,9 @@ public class UICoopRoomController : UISceneController
 	{
 		Debug.LogWarning("OnReverseHearTimeout");
 		IndicatorBlockController.Hide();
-		TNetConnection.UnregisterSceneCallbacks();
-		TNetConnection.Disconnect();
-		GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
+		//TNetConnection.UnregisterSceneCallbacks();
+		//TNetConnection.Disconnect();
+		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnOnConnectionLostButton, null);
 	}
 
 	private void OnUserEnterRoom(TNetEventData evt)
@@ -308,8 +309,9 @@ public class UICoopRoomController : UISceneController
 	private void OnRoomStart(TNetEventData evt)
 	{
 		IndicatorBlockController.Hide();
-		string utfString = tnetObj.CurRoom.GetVariable(TNetRoomVarType.GameStarted).GetUtfString("SceneName");
-		GameData.Instance.cur_coop_boss = (CoopBossType)tnetObj.CurRoom.GetVariable(TNetRoomVarType.GameStarted).GetShort("CurBoss");
+		CoopBossCfg coopBossCfg = GameConfig.Instance.Coop_Boss_Cfg_Set[GameConfig.GetEnemyTypeFromBossType(GameData.Instance.cur_coop_boss)];
+		string utfString = coopBossCfg.scene_list[Random.Range(0, coopBossCfg.scene_list.Count)];
+		GameData.Instance.cur_coop_boss = (CoopBossType)PlayerPrefs.GetInt("curboss");
 		Debug.Log("On Room Start! scene name:" + utfString + " cur boss:" + GameData.Instance.cur_coop_boss);
 		MenuAudioController.DestroyGameMenuAudio();
 		GameData.Instance.loading_to_scene = utfString;

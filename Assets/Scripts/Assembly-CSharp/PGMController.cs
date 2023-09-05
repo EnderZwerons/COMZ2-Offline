@@ -48,10 +48,10 @@ public class PGMController : WeaponController
 		fire_smoke_obj.GetComponent<ParticleSystem>().Stop();
 		explode_radius = (float)weapon_data.config.Ex_conf["explodeRange"];
 		pgm_sight = Accessory[3];
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			tnetObj = TNetConnection.Connection;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	tnetObj = TNetConnection.Connection;
+		//}
 	}
 
 	public override void Update()
@@ -293,22 +293,22 @@ public class PGMController : WeaponController
 				component.targetPos = key.LockPosition;
 				component.target_trans = key.transform;
 				component.target_info = key;
-				if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-				{
-					SFSArray sFSArray2 = new SFSArray();
-					sFSArray2.AddFloat(component.targetPos.x);
-					sFSArray2.AddFloat(component.targetPos.y);
-					sFSArray2.AddFloat(component.targetPos.z);
-					sFSArray.AddSFSArray(sFSArray2);
-				}
+				//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+				//{
+				//	SFSArray sFSArray2 = new SFSArray();
+				//	sFSArray2.AddFloat(component.targetPos.x);
+				//	sFSArray2.AddFloat(component.targetPos.y);
+				//	sFSArray2.AddFloat(component.targetPos.z);
+				//	sFSArray.AddSFSArray(sFSArray2);
+				//}
 			}
 		}
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null && sFSArray.Size() > 0)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutSFSArray("pgmFire", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null && sFSArray.Size() > 0)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutSFSArray("pgmFire", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 		CleanLockTargets();
 	}
 

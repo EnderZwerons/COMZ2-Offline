@@ -342,17 +342,17 @@ public class PlayerController : ObjectController
 	protected override void Start()
 	{
 		GameSceneController.Instance.player_controller = this;
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			tnet_user = tnetObj.Myself;
-			base.gameObject.GetComponent<NetworkTransformSender>().StartSendTransform();
-			player_id = new PlayerID(avatar_data.avatar_type, avatar_data.avatar_state, GameData.Instance.NickName, tnet_user.Id);
-		}
-		else if (GameData.Instance.cur_game_type == GameData.GamePlayType.Normal)
-		{
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	tnet_user = tnetObj.Myself;
+		//	base.gameObject.GetComponent<NetworkTransformSender>().StartSendTransform();
+		//	player_id = new PlayerID(avatar_data.avatar_type, avatar_data.avatar_state, GameData.Instance.NickName, tnet_user.Id);
+		//}
+		//else if (GameData.Instance.cur_game_type == GameData.GamePlayType.Normal)
+		//{
 			tnet_user = new TNetUser(0, string.Empty);
 			player_id = new PlayerID(avatar_data.avatar_type, avatar_data.avatar_state, GameData.Instance.NickName, 0);
-		}
+		//}
 		GameSceneController.Instance.Player_Set.Add(tnet_user, this);
 		GameSceneController.Instance.Player_damage_Set.Add(player_id, 0f);
 		Fire_Light_Wall.enabled = false;
@@ -480,24 +480,24 @@ public class PlayerController : ObjectController
 		{
 			move_state = state;
 			move_state.OnEnterState();
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject = new SFSObject();
-				sFSObject.PutShort("data", (short)move_state.GetStateType());
-				tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerMoveState, sFSObject));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject = new SFSObject();
+			//	sFSObject.PutShort("data", (short)move_state.GetStateType());
+			//	tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerMoveState, sFSObject));
+			//}
 		}
 		else if (move_state != null && move_state.GetStateType() != state.GetStateType())
 		{
 			move_state.OnExitState();
 			move_state = state;
 			move_state.OnEnterState();
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject2 = new SFSObject();
-				sFSObject2.PutShort("data", (short)move_state.GetStateType());
-				tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerMoveState, sFSObject2));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject2 = new SFSObject();
+			//	sFSObject2.PutShort("data", (short)move_state.GetStateType());
+			//	tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerMoveState, sFSObject2));
+			//}
 		}
 	}
 
@@ -508,12 +508,12 @@ public class PlayerController : ObjectController
 			last_fire_state = state;
 			fire_state = state;
 			fire_state.OnEnterState();
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject = new SFSObject();
-				sFSObject.PutShort("data", (short)fire_state.GetStateType());
-				tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerFireState, sFSObject));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject = new SFSObject();
+			//	sFSObject.PutShort("data", (short)fire_state.GetStateType());
+			//	tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerFireState, sFSObject));
+			//}
 		}
 		else if (fire_state != null && fire_state.GetStateType() != state.GetStateType())
 		{
@@ -521,12 +521,12 @@ public class PlayerController : ObjectController
 			fire_state.OnExitState();
 			fire_state = state;
 			fire_state.OnEnterState();
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject2 = new SFSObject();
-				sFSObject2.PutShort("data", (short)fire_state.GetStateType());
-				tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerFireState, sFSObject2));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject2 = new SFSObject();
+			//	sFSObject2.PutShort("data", (short)fire_state.GetStateType());
+			//	tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.PlayerFireState, sFSObject2));
+			//}
 		}
 	}
 
@@ -540,22 +540,22 @@ public class PlayerController : ObjectController
 		StartCoroutine(ChangMotorSpeed());
 		StartCoroutine(InitWeapon());
 		ResetRenderSet();
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutUtfString("nickName", GameData.Instance.NickName);
-			sFSObject.PutShort("avatarType", (short)avatar_data.avatar_type);
-			sFSObject.PutShort("hpLv", (short)avatar_data.hp_level);
-			sFSObject.PutShort("armorLv", (short)avatar_data.armor_level);
-			sFSObject.PutShort("dmgLv", (short)avatar_data.damage_level);
-			sFSObject.PutShort("avatarLv", (short)avatar_data.avatar_state);
-			sFSObject.PutUtfString("weapon", avatar_data.primary_equipment);
-			for (int i = 0; i < 2; i++)
-			{
-				sFSObject.PutUtfString("skill" + i, avatar_data.skill_list[i]);
-			}
-			tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.AvatarData, sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutUtfString("nickName", GameData.Instance.NickName);
+		//	sFSObject.PutShort("avatarType", (short)avatar_data.avatar_type);
+		//	sFSObject.PutShort("hpLv", (short)avatar_data.hp_level);
+		//	sFSObject.PutShort("armorLv", (short)avatar_data.armor_level);
+		//	sFSObject.PutShort("dmgLv", (short)avatar_data.damage_level);
+		//	sFSObject.PutShort("avatarLv", (short)avatar_data.avatar_state);
+		//	sFSObject.PutUtfString("weapon", avatar_data.primary_equipment);
+		//	for (int i = 0; i < 2; i++)
+		//	{
+		//		sFSObject.PutUtfString("skill" + i, avatar_data.skill_list[i]);
+		//	}
+		//	tnetObj.Send(new SetUserVariableRequest(TNetUserVarType.AvatarData, sFSObject));
+		//}
 	}
 
 	public IEnumerator ChangMotorSpeed()
@@ -786,30 +786,30 @@ public class PlayerController : ObjectController
 			return;
 		}
 		avatar_data.Injured(damage);
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
-		{
-			SFSArray sFSArray = new SFSArray();
-			sFSArray.AddFloat(avatar_data.cur_hp);
-			sFSArray.AddFloat(avatar_data.hp_capacity);
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutSFSArray("playerInjured", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
+		//{
+		//	SFSArray sFSArray = new SFSArray();
+		//	sFSArray.AddFloat(avatar_data.cur_hp);
+		//	sFSArray.AddFloat(avatar_data.hp_capacity);
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutSFSArray("playerInjured", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 		if (avatar_data.cur_hp <= 0f)
 		{
 			avatar_data.cur_hp = 0f;
 			OnDead(damage, weapon, controller, hit_point, hit_normal);
 			SetFireState(DEAD_STATE);
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject2 = new SFSObject();
-				sFSObject2.PutUtfString("playerDead", "0");
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
-				foreach (EnemyController value in GameSceneController.Instance.Enemy_Set.Values)
-				{
-					value.RemoveTargetFromHateSet(this);
-				}
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject2 = new SFSObject();
+			//	sFSObject2.PutUtfString("playerDead", "0");
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
+			//	foreach (EnemyController value in GameSceneController.Instance.Enemy_Set.Values)
+			//	{
+			//		value.RemoveTargetFromHateSet(this);
+			//	}
+			//}
 		}
 		UpdateHpBar();
 		GameSceneController.Instance.screen_blood.OnInjured();
@@ -1092,15 +1092,15 @@ public class PlayerController : ObjectController
 		gameObject.transform.parent = base.transform;
 		RemoveTimerScript removeTimerScript = gameObject.AddComponent<RemoveTimerScript>();
 		removeTimerScript.life = 3f;
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSArray sFSArray = new SFSArray();
-			sFSArray.AddFloat(avatar_data.cur_hp);
-			sFSArray.AddFloat(avatar_data.hp_capacity);
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutSFSArray("playerRecover", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSArray sFSArray = new SFSArray();
+		//	sFSArray.AddFloat(avatar_data.cur_hp);
+		//	sFSArray.AddFloat(avatar_data.hp_capacity);
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutSFSArray("playerRecover", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	public virtual void UpdateHpBar()
@@ -1297,12 +1297,12 @@ public class PlayerController : ObjectController
 		GameSceneController.Instance.SetComboBarStar(1);
 		GameObject gameObject = GameSceneController.Instance.combo_get_pool1.GetComponent<ObjectPool>().CreateObject(base.transform.position, Quaternion.identity);
 		gameObject.transform.parent = base.transform;
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutShort("playerComboBuff", 1);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutShort("playerComboBuff", 1);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	protected void OnComboBuffStrong()
@@ -1315,12 +1315,12 @@ public class PlayerController : ObjectController
 		GameSceneController.Instance.SetComboBarStar(2);
 		GameObject gameObject = GameSceneController.Instance.combo_get_pool2.GetComponent<ObjectPool>().CreateObject(base.transform.position, Quaternion.identity);
 		gameObject.transform.parent = base.transform;
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutShort("playerComboBuff", 2);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutShort("playerComboBuff", 2);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	protected void OnComboBuffSuperman()
@@ -1334,12 +1334,12 @@ public class PlayerController : ObjectController
 		GameObject gameObject = GameSceneController.Instance.combo_get_pool3.GetComponent<ObjectPool>().CreateObject(base.transform.position, Quaternion.identity);
 		gameObject.transform.parent = base.transform;
 		combo_buff_obj.SetActive(true);
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutShort("playerComboBuff", 3);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutShort("playerComboBuff", 3);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	protected void OnComboBuffStop()
@@ -1351,12 +1351,12 @@ public class PlayerController : ObjectController
 		GameSceneController.Instance.SetComboLabel(cur_combo_type.ToString());
 		GameSceneController.Instance.SetComboBarStar(0);
 		combo_buff_obj.SetActive(false);
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutShort("playerComboBuff", 0);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutShort("playerComboBuff", 0);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	public void ReleaseChaisawTarget()
@@ -1464,15 +1464,15 @@ public class PlayerController : ObjectController
 		{
 			ShowSwatShieldEff();
 		}
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-		{
-			SFSArray sFSArray = new SFSArray();
-			sFSArray.AddFloat(avatar_data.cur_hp);
-			sFSArray.AddFloat(avatar_data.hp_capacity);
-			SFSObject sFSObject = new SFSObject();
-			sFSObject.PutSFSArray("playerRebirth", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+		//{
+		//	SFSArray sFSArray = new SFSArray();
+		//	sFSArray.AddFloat(avatar_data.cur_hp);
+		//	sFSArray.AddFloat(avatar_data.hp_capacity);
+		//	SFSObject sFSObject = new SFSObject();
+		//	sFSObject.PutSFSArray("playerRebirth", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//}
 	}
 
 	public void ResetFireIdle(bool reset_weapon = true)
@@ -1561,12 +1561,12 @@ public class PlayerController : ObjectController
 		if (skill_set.ContainsKey(text) && skill_set[text].ConjureSkill())
 		{
 			Debug.Log("ConjureSkill:" + text);
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSObject sFSObject = new SFSObject();
-				sFSObject.PutUtfString("skill", text);
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSObject sFSObject = new SFSObject();
+			//	sFSObject.PutUtfString("skill", text);
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+			//}
 		}
 	}
 

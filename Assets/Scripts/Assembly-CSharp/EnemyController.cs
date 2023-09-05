@@ -331,10 +331,10 @@ public class EnemyController : ObjectController
 		controller_type = ControllerType.Enemy;
 		nav_pather = GetComponent<ControllerNavPath>();
 		Init();
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			tnetObj = TNetConnection.Connection;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	tnetObj = TNetConnection.Connection;
+		//}
 	}
 
 	protected override void Update()
@@ -662,10 +662,10 @@ public class EnemyController : ObjectController
 
 	public virtual void CheckTargetPlayer()
 	{
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && !TNetConnection.IsServer)
-		{
-			return;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && !TNetConnection.IsServer)
+		//{
+		//	return;
+		//}
 		if (target_player == null || hatred_set.Count == 0)
 		{
 			if (Time.time - check_target_time >= check_target_rate)
@@ -710,45 +710,45 @@ public class EnemyController : ObjectController
 
 	public virtual void SetTargetPlayer()
 	{
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			if (!TNetConnection.IsServer || IsPartol || !(target_player != null) || !(nav_pather != null))
-			{
-				return;
-			}
-			nav_pather.SetTarget(target_player.transform);
-			if (!hatred_set.ContainsKey(target_player))
-			{
-				hatred_set.Add(target_player, 1f);
-			}
-			if (tnetObj != null)
-			{
-				SFSObject sFSObject = new SFSObject();
-				SFSArray sFSArray = new SFSArray();
-				sFSArray.AddShort((short)enemy_id);
-				sFSArray.AddShort((short)target_player.controller_type);
-				int val = 0;
-				if (target_player.controller_type == ControllerType.Player)
-				{
-					PlayerController playerController = target_player as PlayerController;
-					val = playerController.tnet_user.Id;
-				}
-				else if (target_player.controller_type == ControllerType.GuardianForce)
-				{
-					GuardianForceController guardianForceController = target_player as GuardianForceController;
-					val = guardianForceController.owner_controller.tnet_user.Id;
-				}
-				else if (target_player.controller_type == ControllerType.Enemy)
-				{
-					EnemyController enemyController = target_player as EnemyController;
-					val = enemyController.enemy_id;
-				}
-				sFSArray.AddInt(val);
-				sFSObject.PutSFSArray("enemyChangeTar", sFSArray);
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			}
-		}
-		else if (!IsPartol && target_player != null && nav_pather != null)
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	if (!TNetConnection.IsServer || IsPartol || !(target_player != null) || !(nav_pather != null))
+		//	{
+		//		return;
+		//	}
+		//	nav_pather.SetTarget(target_player.transform);
+		//	if (!hatred_set.ContainsKey(target_player))
+		//	{
+		//		hatred_set.Add(target_player, 1f);
+		//	}
+		//	if (tnetObj != null)
+		//	{
+		//		SFSObject sFSObject = new SFSObject();
+		//		SFSArray sFSArray = new SFSArray();
+		//		sFSArray.AddShort((short)enemy_id);
+		//		sFSArray.AddShort((short)target_player.controller_type);
+		//		int val = 0;
+		//		if (target_player.controller_type == ControllerType.Player)
+		//		{
+		//			PlayerController playerController = target_player as PlayerController;
+		//			val = playerController.tnet_user.Id;
+		//		}
+		//		else if (target_player.controller_type == ControllerType.GuardianForce)
+		//		{
+		//			GuardianForceController guardianForceController = target_player as GuardianForceController;
+		//			val = guardianForceController.owner_controller.tnet_user.Id;
+		//		}
+		//		else if (target_player.controller_type == ControllerType.Enemy)
+		//		{
+		//			EnemyController enemyController = target_player as EnemyController;
+		//			val = enemyController.enemy_id;
+		//		}
+		//		sFSArray.AddInt(val);
+		//		sFSObject.PutSFSArray("enemyChangeTar", sFSArray);
+		//		tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//	}
+		//}
+		/*else*/ if (!IsPartol && target_player != null && nav_pather != null)
 		{
 			nav_pather.SetTarget(target_player.transform);
 			if (!hatred_set.ContainsKey(target_player))
@@ -891,32 +891,32 @@ public class EnemyController : ObjectController
 		float num = dictionary[key];
 		dictionary2[key2] = num + damage;
 		OnHitSound(weapon);
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
-		{
-			SFSObject sFSObject = new SFSObject();
-			SFSArray sFSArray = new SFSArray();
-			sFSArray.AddShort((short)enemy_id);
-			sFSArray.AddFloat(damage);
-			if (weapon != null && weapon.weapon_type == WeaponType.IceGun)
-			{
-				tem_frozenTime = ((IceGunController)weapon).frozenTime;
-				sFSArray.AddBool(true);
-				sFSArray.AddFloat(tem_frozenTime);
-			}
-			else
-			{
-				sFSArray.AddBool(false);
-				sFSArray.AddFloat(0f);
-			}
-			sFSObject.PutSFSArray("enemyInjured", sFSArray);
-			tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			Dictionary<PlayerID, float> player_damage_Set;
-			Dictionary<PlayerID, float> dictionary3 = (player_damage_Set = GameSceneController.Instance.Player_damage_Set);
-			PlayerID player_id;
-			PlayerID key3 = (player_id = GameSceneController.Instance.player_controller.player_id);
-			num = player_damage_Set[player_id];
-			dictionary3[key3] = num + damage;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
+		//{
+		//	SFSObject sFSObject = new SFSObject();
+		//	SFSArray sFSArray = new SFSArray();
+		//	sFSArray.AddShort((short)enemy_id);
+		//	sFSArray.AddFloat(damage);
+		//	if (weapon != null && weapon.weapon_type == WeaponType.IceGun)
+		//	{
+		//		tem_frozenTime = ((IceGunController)weapon).frozenTime;
+		//		sFSArray.AddBool(true);
+		//		sFSArray.AddFloat(tem_frozenTime);
+		//	}
+		//	else
+		//	{
+		//		sFSArray.AddBool(false);
+		//		sFSArray.AddFloat(0f);
+		//	}
+		//	sFSObject.PutSFSArray("enemyInjured", sFSArray);
+		//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+		//	Dictionary<PlayerID, float> player_damage_Set;
+		//	Dictionary<PlayerID, float> dictionary3 = (player_damage_Set = GameSceneController.Instance.Player_damage_Set);
+		//	PlayerID player_id;
+		//	PlayerID key3 = (player_id = GameSceneController.Instance.player_controller.player_id);
+		//	num = player_damage_Set[player_id];
+		//	dictionary3[key3] = num + damage;
+		//}
 		if (enemy_data.OnInjured(damage))
 		{
 			if (weapon != null && weapon.weapon_type == WeaponType.IceGun)
@@ -927,15 +927,15 @@ public class EnemyController : ObjectController
 			GameSceneController.Instance.UpdateEnemyDeathInfo(enemy_data.enemy_type, 1);
 			OnDead(damage, weapon, player, hit_point, hit_normal);
 			SetState(DEAD_STATE);
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
-			{
-				SFSObject sFSObject2 = new SFSObject();
-				SFSArray sFSArray2 = new SFSArray();
-				sFSArray2.AddShort((short)enemy_id);
-				sFSArray2.AddFloat(damage);
-				sFSObject2.PutSFSArray("enemyDead", sFSArray2);
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && damage > 0f && tnetObj != null)
+			//{
+			//	SFSObject sFSObject2 = new SFSObject();
+			//	SFSArray sFSArray2 = new SFSArray();
+			//	sFSArray2.AddShort((short)enemy_id);
+			//	sFSArray2.AddFloat(damage);
+			//	sFSObject2.PutSFSArray("enemyDead", sFSArray2);
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
+			//}
 		}
 		else if (weapon != null && weapon.weapon_type == WeaponType.IceGun)
 		{
@@ -1460,17 +1460,17 @@ public class EnemyController : ObjectController
 		}
 		if (!IsEnchant)
 		{
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && !TNetConnection.IsServer)
-			{
-				if (tnetObj != null)
-				{
-					SFSObject sFSObject = new SFSObject();
-					sFSObject.PutShort("askEnmeyEnchant", (short)enemy_id);
-					tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-				}
-			}
-			else
-			{
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && !TNetConnection.IsServer)
+			//{
+			//	if (tnetObj != null)
+			//	{
+			//		SFSObject sFSObject = new SFSObject();
+			//		sFSObject.PutShort("askEnmeyEnchant", (short)enemy_id);
+			//		tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+			//	}
+			//}
+			//else
+			//{
 				is_enchant = true;
 				base.gameObject.layer = PhysicsLayer.NPC;
 				hatred_set.Clear();
@@ -1490,14 +1490,14 @@ public class EnemyController : ObjectController
 				}
 				GameSceneController.Instance.Enemy_Enchant_Set.Add(enemy_id, this);
 				ShowEnchantBuff(true);
-				if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && TNetConnection.IsServer && tnetObj != null)
-				{
-					SFSObject sFSObject2 = new SFSObject();
-					sFSObject2.PutShort("EnmeyEnchant", (short)enemy_id);
-					tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
-					Debug.Log("Send EnmeyEnchant msg.");
-				}
-			}
+				//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && TNetConnection.IsServer && tnetObj != null)
+				//{
+				//	SFSObject sFSObject2 = new SFSObject();
+				//	sFSObject2.PutShort("EnmeyEnchant", (short)enemy_id);
+				//	tnetObj.Send(new BroadcastMessageRequest(sFSObject2));
+				//	Debug.Log("Send EnmeyEnchant msg.");
+				//}
+			//}
 			return true;
 		}
 		return false;

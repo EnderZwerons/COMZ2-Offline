@@ -37,10 +37,10 @@ public class IonCannonController : WeaponController
 		fire_smoke_obj.transform.localPosition = Vector3.zero;
 		fire_smoke_obj.transform.localRotation = Quaternion.identity;
 		explode_radius = (float)weapon_data.config.Ex_conf["explodeRange"];
-		if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
-		{
-			tnetObj = TNetConnection.Connection;
-		}
+		//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop)
+		//{
+		//	tnetObj = TNetConnection.Connection;
+		//}
 	}
 
 	public override void Update()
@@ -150,16 +150,16 @@ public class IonCannonController : WeaponController
 			component.damage = weapon_data.damage_val;
 			component.object_controller = controller;
 			component.weapon_controller = this;
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
-			{
-				SFSArray sFSArray = new SFSArray();
-				sFSArray.AddFloat(vector2.x);
-				sFSArray.AddFloat(vector2.y);
-				sFSArray.AddFloat(vector2.z);
-				SFSObject sFSObject = new SFSObject();
-				sFSObject.PutSFSArray("ionFire", sFSArray);
-				tnetObj.Send(new BroadcastMessageRequest(sFSObject));
-			}
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && tnetObj != null)
+			//{
+			//	SFSArray sFSArray = new SFSArray();
+			//	sFSArray.AddFloat(vector2.x);
+			//	sFSArray.AddFloat(vector2.y);
+			//	sFSArray.AddFloat(vector2.z);
+			//	SFSObject sFSObject = new SFSObject();
+			//	sFSObject.PutSFSArray("ionFire", sFSArray);
+			//	tnetObj.Send(new BroadcastMessageRequest(sFSObject));
+			//}
 		}
 	}
 

@@ -70,10 +70,10 @@ public class BossCoopMissionController : MissionController
 		GameSceneController.Instance.game_main_panel.boss_panel.SetIcon(frame_name);
 		GameSceneController.Instance.game_main_panel.boss_panel.SetContent(0 + " / " + 1);
 		yield return new WaitForSeconds(3f);
-		while (!TNetConnection.IsServer)
-		{
-			yield return 3;
-		}
+		//while (!TNetConnection.IsServer)
+		//{
+		//	yield return 3;
+		//}
 		while (GameSceneController.Instance.IsMissionFinished)
 		{
 			yield return 3;

@@ -137,11 +137,11 @@ public class WoodBoxController : ObjectController
 		}
 		if (spawn_success && index < Accessory.Count)
 		{
-			if (GameData.Instance.cur_game_type == GameData.GamePlayType.Normal || (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && TNetConnection.IsServer))
-			{
+			//if (GameData.Instance.cur_game_type == GameData.GamePlayType.Normal || (GameData.Instance.cur_game_type == GameData.GamePlayType.Coop && TNetConnection.IsServer))
+			//{
 				Vector3 offset = Vector3.up * 0.5f;
 				Object.Instantiate(Accessory[index], base.transform.position + offset, Quaternion.identity);
-			}
+			//}
 		}
 		else
 		{
