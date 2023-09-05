@@ -6,11 +6,11 @@ using UnityEditor;
 
 public class FindShader : Editor
 {
-	//[MenuItem("Shader Test/Find The WIND!!")]
-	//public static void FindTheWind()
-	//{
-	//	FindTheShader("Triniti/Environment/WIND_COL_AB_2S_DO");
-	//}
+	[MenuItem("Shader Test/Find The SHADER!!")]
+	public static void FindTheWind()
+	{
+		FindTheShader("Toon/Basic Outline");
+	}
 
 	public static void FindTheShader(string shader)
 	{

@@ -18,6 +18,7 @@ SubShader {
  Pass {
   Tags { "LIGHTMODE"="ForwardBase" "QUEUE"="Transparent" "RenderType"="Transparent" }
   ZWrite Off
+  //turn on culling if it's too goofy
   Cull Off
   Blend SrcAlpha OneMinusSrcAlpha
 	CGPROGRAM

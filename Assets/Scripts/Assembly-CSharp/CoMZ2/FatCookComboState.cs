@@ -25,6 +25,7 @@ namespace CoMZ2
 				if (AnimationUtil.IsAnimationPlayedPercentage(fat_cook.gameObject, fat_cook.ANI_SKILL_FOCUS, 0.9f))
 				{
 					skill_stpe++;
+					m_enemy.nav_pather.PlayNavMeshAgent();
 					AnimationUtil.CrossAnimate(fat_cook.gameObject, fat_cook.ANI_SKILL_COMBO, WrapMode.Loop);
 				}
 			}
@@ -70,6 +71,7 @@ namespace CoMZ2
 			cur_combo_rest_time = 0f;
 			m_enemy.SetPathCatchState(false);
 			AnimationUtil.CrossAnimate(fat_cook.gameObject, fat_cook.ANI_SKILL_FOCUS, WrapMode.ClampForever);
+			m_enemy.nav_pather.StopNavMeshAgent();
 		}
 
 		public override void OnExitState()
