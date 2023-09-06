@@ -639,17 +639,9 @@ public class GameSceneCoopController : GameSceneController
 				gameReward = new GameReward(GameReward.GameRewardType.WEAPONFRAGMENT, weaponFragmentProbsCfg.image_name, 1);
 			}
 			GameRewardCoop item;
-			int random = Random.Range(0, 2);
 			//if (key3.tnet_id == playerID.tnet_id)
 			//{
-			if (random == 1)
-			{
 				item = new GameRewardCoop(playerID.avatar_type, playerID.avatar_state, playerID.player_name, (int)coopBossCfg.hp_capacity, GameRewardCoop.RewardMoneyType.CRYSTAL, coopBossCfg.reward_crystal, gameReward, flag2, fragment_sell);
-			}
-			else
-			{
-				item = new GameRewardCoop(playerID.avatar_type, playerID.avatar_state, playerID.player_name, (int)coopBossCfg.hp_capacity, GameRewardCoop.RewardMoneyType.CASH, coopBossCfg.reward_gold, gameReward, flag2, fragment_sell);
-			}
 			//}
 			//else
 			//{
