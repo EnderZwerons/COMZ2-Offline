@@ -61,6 +61,7 @@ public class UILotteryController : UISceneController
 		{
 			TapJoyScript.Instance.points_add_call_back = OnTapJoyPointsAdd;
 		}
+		OnResetServerTimeFinish();
 	}
 
 	protected override void OnDestroy()
@@ -166,7 +167,7 @@ public class UILotteryController : UISceneController
 
 	private void OnResetSeverTimeError()
 	{
-		OnResetServerTimeFinish();
+		//OnResetServerTimeFinish();
 		//IndicatorBlockController.Hide();
 		//GameMsgBoxController.ShowMsgBox(GameMsgBoxController.MsgBoxType.SingleButton, TUIControls.gameObject, "Unable to connect to the server! Please try again later.", OnMsgBoxOkButton, null);
 	}
