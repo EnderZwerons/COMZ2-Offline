@@ -24,7 +24,6 @@ namespace CoMZ2
 				{
 					skill_stpe++;
 					haoke.ANI_CUR_ATTACK = haoke.ANI_RUSH_02;
-					m_enemy.nav_pather.PlayNavMeshAgent();
 					AnimationUtil.CrossAnimate(haoke.gameObject, haoke.ANI_RUSH_02, WrapMode.Loop);
 					cur_rush_time = 0f;
 					haoke.PlayEffRush();
@@ -65,7 +64,6 @@ namespace CoMZ2
 			haoke.rush_enable = false;
 			AnimationUtil.CrossAnimate(haoke.gameObject, haoke.ANI_RUSH_01, WrapMode.ClampForever);
 			haoke.PlayEffRushReady();
-			m_enemy.nav_pather.StopNavMeshAgent();
 		}
 
 		public override void OnExitState()
