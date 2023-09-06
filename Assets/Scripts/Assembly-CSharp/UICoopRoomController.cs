@@ -181,20 +181,20 @@ public class UICoopRoomController : UISceneController
 	private void RefreshClientsShow()
 	{
 		ClearClientsData();
-		TNetUser tNetUser = FindRoomMaster();
-		if (tNetUser == null)
-		{
-			return;
-		}
-		int num = 0;
-		user_item_list[num++].ResetUserItem(tNetUser, tnetObj.CurRoom.IsPasswordProtected);
-		foreach (TNetUser user in TNetConnection.Connection.CurRoom.UserList)
-		{
-			if (user.Id != tNetUser.Id && user_item_list[num].ResetUserItem(user, tnetObj.CurRoom.IsPasswordProtected))
-			{
-				num++;
-			}
-		}
+		//TNetUser tNetUser = FindRoomMaster();
+		//if (tNetUser == null)
+		//{
+		//	return;
+		//}
+		//int num = 0;
+		user_item_list[0].ResetUserItem(null, false);
+		//foreach (TNetUser user in TNetConnection.Connection.CurRoom.UserList)
+		//{
+		//	if (user.Id != tNetUser.Id && user_item_list[num].ResetUserItem(user, tnetObj.CurRoom.IsPasswordProtected))
+		//	{
+		//		num++;
+		//	}
+		//}
 	}
 
 	private void CreateMoneyReward(int amount, string image, int index)
