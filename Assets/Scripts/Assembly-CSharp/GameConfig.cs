@@ -565,7 +565,7 @@ public class GameConfig : MonoBehaviour
 			coopBossCfg.boss_show_name = item.GetAttribute("showName");
 			coopBossCfg.boss_type = GetEnemyTypeFromCfg(coopBossCfg.boss_name);
 			coopBossCfg.day_level = int.Parse(item.GetAttribute("day"));
-			coopBossCfg.hp_capacity = float.Parse(item.GetAttribute("hp"));
+			coopBossCfg.hp_capacity = float.Parse(item.GetAttribute("hp")) / 4;
 			coopBossCfg.damage_base = float.Parse(item.GetAttribute("damageBase"));
 			coopBossCfg.reward_gold = int.Parse(item.GetAttribute("rewardGold"));
 			coopBossCfg.reward_crystal = int.Parse(item.GetAttribute("rewardCrystal"));

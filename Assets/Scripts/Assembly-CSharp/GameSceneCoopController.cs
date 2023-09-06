@@ -458,12 +458,13 @@ public class GameSceneCoopController : GameSceneController
 		CoopBossCfg coopBossCfg = GameConfig.Instance.Coop_Boss_Cfg_Set[GameConfig.GetEnemyTypeFromBossType(GameData.Instance.cur_coop_boss)];
 		Debug.Log("Coop boss reward:" + coopBossCfg.ToString());
 		GameData.Instance.total_cash += coopBossCfg.reward_gold_failed;
+		PlayerID playerID = new PlayerID(player_controller.avatar_data.avatar_type, player_controller.avatar_data.avatar_state, player_controller.avatar_data.show_name, 0);
 		bool flag = false;
 		foreach (PlayerID key in Player_damage_Set.Keys)
 		{
 			GameReward weapon_fragment = null;
 			flag = ((key.tnet_id == player_controller.tnet_user.Id) ? true : false);
-			GameRewardCoop item = new GameRewardCoop(key.avatar_type, key.avatar_state, key.player_name, (int)Player_damage_Set[key], GameRewardCoop.RewardMoneyType.CASH, coopBossCfg.reward_gold_failed, weapon_fragment, flag, false);
+			GameRewardCoop item = new GameRewardCoop(playerID.avatar_type, playerID.avatar_state, playerID.player_name, (int)Player_damage_Set[key], GameRewardCoop.RewardMoneyType.CASH, coopBossCfg.reward_gold_failed, weapon_fragment, flag, false);
 			list.Add(item);
 		}
 		reward_coop_panel.ResetGameReward(list);
@@ -479,7 +480,7 @@ public class GameSceneCoopController : GameSceneController
 		CoopBossCfg coopBossCfg = GameConfig.Instance.Coop_Boss_Cfg_Set[GameConfig.GetEnemyTypeFromBossType(GameData.Instance.cur_coop_boss)];
 		Debug.Log("Coop boss reward:" + coopBossCfg.ToString());
 		List<string> rewards_weapon_fragments = coopBossCfg.rewards_weapon_fragments;
-		PlayerID playerID = null;
+		PlayerID playerID = new PlayerID(player_controller.avatar_data.avatar_type, player_controller.avatar_data.avatar_state, player_controller.avatar_data.show_name, 0);
 		float num = 0f;
 		foreach (PlayerID key in Player_damage_Set.Keys)
 		{
@@ -561,11 +562,12 @@ public class GameSceneCoopController : GameSceneController
 		}
 		bool flag2 = false;
 		bool fragment_sell = false;
-		foreach (PlayerID key3 in Player_damage_Set.Keys)
-		{
+		//foreach (PlayerID key3 in Player_damage_Set.Keys)
+		//{
 			GameProb gameProb = null;
 			GameReward gameReward = null;
-			flag2 = ((key3.tnet_id == player_controller.tnet_user.Id) ? true : false);
+			//flag2 = ((key3.tnet_id == player_controller.tnet_user.Id) ? true : false);
+			flag2 = true;
 			if (flag2)
 			{
 				if (flag)
@@ -637,17 +639,25 @@ public class GameSceneCoopController : GameSceneController
 				gameReward = new GameReward(GameReward.GameRewardType.WEAPONFRAGMENT, weaponFragmentProbsCfg.image_name, 1);
 			}
 			GameRewardCoop item;
-			if (key3.tnet_id == playerID.tnet_id)
+			int random = Random.Range(0, 2);
+			//if (key3.tnet_id == playerID.tnet_id)
+			//{
+			if (random == 1)
 			{
-				item = new GameRewardCoop(key3.avatar_type, key3.avatar_state, key3.player_name, (int)Player_damage_Set[key3], GameRewardCoop.RewardMoneyType.CRYSTAL, coopBossCfg.reward_crystal, gameReward, flag2, fragment_sell);
+				item = new GameRewardCoop(playerID.avatar_type, playerID.avatar_state, playerID.player_name, (int)coopBossCfg.hp_capacity, GameRewardCoop.RewardMoneyType.CRYSTAL, coopBossCfg.reward_crystal, gameReward, flag2, fragment_sell);
 			}
 			else
 			{
-				reward_cash_temp = (int)((float)coopBossCfg.reward_gold * (Player_damage_Set[key3] / coopBossCfg.hp_capacity));
-				item = new GameRewardCoop(key3.avatar_type, key3.avatar_state, key3.player_name, (int)Player_damage_Set[key3], GameRewardCoop.RewardMoneyType.CASH, reward_cash_temp, gameReward, flag2, fragment_sell);
+				item = new GameRewardCoop(playerID.avatar_type, playerID.avatar_state, playerID.player_name, (int)coopBossCfg.hp_capacity, GameRewardCoop.RewardMoneyType.CASH, coopBossCfg.reward_gold, gameReward, flag2, fragment_sell);
 			}
+			//}
+			//else
+			//{
+			//	reward_cash_temp = (int)((float)coopBossCfg.reward_gold * (Player_damage_Set[key3] / coopBossCfg.hp_capacity));
+			//	item = new GameRewardCoop(key3.avatar_type, key3.avatar_state, key3.player_name, (int)Player_damage_Set[key3], GameRewardCoop.RewardMoneyType.CASH, reward_cash_temp, gameReward, flag2, fragment_sell);
+			//}
 			list.Add(item);
-		}
+		//}
 		reward_coop_panel.ResetGameReward(list);
 		Hashtable hashtable = new Hashtable();
 		hashtable.Add("Boss", coopBossCfg.boss_name);

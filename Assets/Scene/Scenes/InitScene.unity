@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 24}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.125, y: -0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 28}
@@ -262,8 +262,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.26972476
-    height: 1.0449202
+    width: 0.9999523
+    height: 1
   near clip plane: -128
   far clip plane: 128
   field of view: 60
@@ -528,8 +528,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 441
-    height: 961
+    width: 2327
+    height: 1309
 --- !u!1 &1486866191
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 1486866193}
   - component: {fileID: 1486866192}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CursorLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

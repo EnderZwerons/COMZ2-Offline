@@ -134,12 +134,13 @@ public class UICoopRoomController : UISceneController
 
 	private void OnBackButton(TUIControl control, int eventType, float wparam, float lparam, object data)
 	{
-		if (eventType == 3)
-		{
-			Debug.Log("OnBackButton");
-			tnetObj.Send(new LeaveRoomRequest());
-			IndicatorBlockController.ShowIndicator(TUIControls.gameObject, string.Empty);
-		}
+		//if (eventType == 3)
+		//{
+		//	Debug.Log("OnBackButton");
+		//	tnetObj.Send(new LeaveRoomRequest());
+		//	IndicatorBlockController.ShowIndicator(TUIControls.gameObject, string.Empty);
+		//}
+		Fade.FadeOut("UICoopHall");
 	}
 
 	private void OnKickButton(TUIControl control, int eventType, float wparam, float lparam, object data)
