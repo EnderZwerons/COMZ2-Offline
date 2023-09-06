@@ -25,10 +25,12 @@ namespace CoMZ2
 		{
 			m_npc.SetPathCatchState(false);
 			cur_time = 0f;
+			m_npc.nav_pather.StopNavMeshAgent();
 		}
 
 		public override void OnExitState()
 		{
+			m_npc.nav_pather.PlayNavMeshAgent();
 		}
 	}
 }
